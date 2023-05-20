@@ -4,7 +4,7 @@ from django.db import models
 class ToDo(models.Model):
     title = models.CharField(
         max_length=50,
-        verbose_name='Название'
+        verbose_name='Название', unique=True
     )
     
     description = models.TextField(
