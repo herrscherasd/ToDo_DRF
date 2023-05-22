@@ -14,4 +14,4 @@ urlpatterns = [
     path('users/login/', TokenObtainPairView.as_view(), name = 'api_login'),
     path('users/refresh/', TokenRefreshView.as_view(), name = 'api_refresh'),
 ]
-urlpatterns = router.urls
+urlpatterns += router.urls

@@ -1,11 +1,18 @@
 from rest_framework import serializers
 
 from apps.users.models import User
+from apps.tasks.serializer import ToDoSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email', 'phone_number', 'created_at', 'age']
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    user_tasks = ToDoSerializer(many=True, read_only=True)
+    class Meta:
+        model =User
+        fields = ['id', 'username', 'email', 'phone_number', 'created_at', 'age']
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(

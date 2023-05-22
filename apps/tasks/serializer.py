@@ -6,3 +6,8 @@ class ToDoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDo
         fields = ['title', 'description', 'image']
+
+class TaskDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ToDo
+        fields = '__all__'
