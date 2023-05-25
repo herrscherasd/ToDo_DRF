@@ -1,7 +1,7 @@
-from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.response import Response
 from rest_framework import mixins, generics
-
 from rest_framework import filters
 
 from apps.tasks.models import ToDo
@@ -32,12 +32,12 @@ class ToDoAPIViewSet(GenericViewSet,
         return (AllowAny(), )
     
 class TasksDeleteAPIView(generics.DestroyAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSErializer
-    permission_classes = (TodoPermissions, )
+    queryset = ToDo.objects.all()
+    serializer_class = ToDoSerializer
+    permission_classes = (TaskPermission, )
 
     def delete(self,request, *args, **kwargs):
-        todo = Todo.objects.filter(user = request.user)
+        todo = ToDo.objects.filter(user = request.user)
         todo = [i for i in todo.delete()]
 
         return Response({"delete": "Все таски удалены"})

@@ -1,8 +1,6 @@
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny
 from rest_framework import mixins
-
-
 
 from apps.users.models import User
 from apps.users.serializer import UserSerializer, UserRegisterSerializer, UserDetailSerializer
